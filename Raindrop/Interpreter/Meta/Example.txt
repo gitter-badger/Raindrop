@@ -1,0 +1,10 @@
+﻿﻿meta:
+{0} = Panic (string,string) [msg,why]
+[0] = s (string)
+
+
+  .ParameterNum   Method		Value
+MP.0			  [0]			%1
+
+
+IF [0] 

@@ -11,19 +11,23 @@ namespace Raindrop
         public static List<KThread> Pool      = new List<KThread>();
         public static List<Process> Processes = new List<Process>();
 
+        public static KThread currentThread;
+
         protected override void BeforeRun()
         {
             Console.WriteLine("Raindrop OS created by Krasno.");
             Engine en = new Engine();
-            Process Bootstrap = new Process();
+            Process Bootstrap = new Process("");
         }
 
         protected override void Run()
         {
-            Console.Write("Input: ");
-            var input = Console.ReadLine();
-            Console.Write("Text typed: ");
-            Console.WriteLine(input);
+            // Step through every thread
+            for (var i = 0; i < Pool.Count; i++)
+            {
+                currentThread = Pool[i];
+                Pool[i].Step();
+            }
         }
     }
 }
