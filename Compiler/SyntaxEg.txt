@@ -1,8 +1,0 @@
-﻿VarName = <Value>
-EG:
-
-Name = "Emile";
-Age = 16;
-Age = 10 + 6;
-
-std.io.print(Age);
