@@ -10,13 +10,13 @@ namespace Raindrop.Shells
 
         public override void Run()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("$");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("krasno");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("@");
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("rd-pc");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("> ");
@@ -24,6 +24,7 @@ namespace Raindrop.Shells
 
             command = Console.ReadLine();
 
+            
             Kernel.CM.Execute(command);
         }
     }

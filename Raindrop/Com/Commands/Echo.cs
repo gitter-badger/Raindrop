@@ -8,6 +8,7 @@ namespace Raindrop.Com.Commands
     {
         public static string Name = "echo";
         public static string Info = "Echoes back what you type in. echo @s";
+        public static bool NeedsParam = true;
 
         public static void Run(string[] c)
         {
