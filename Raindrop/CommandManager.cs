@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Raindrop
 {
@@ -21,17 +20,31 @@ namespace Raindrop
             Console.WriteLine("Registering commands...");
 
             #region Command registering
-            Commands.Add(Echo.Name, new Command(Echo.Name, Echo.Info, Echo.NeedsParam,
+            Register(new Command(Echo.Name, Echo.Info, Echo.NeedsParam,
                 () => Echo.Run(y.ToArray())));
-            Commands.Add(Shutdown.Name, new Command(Shutdown.Name, Shutdown.Info, Shutdown.NeedsParam,
+
+            Register(new Command(Shutdown.Name, Shutdown.Info, Shutdown.NeedsParam,
                 () => Shutdown.Run()));
-            Commands.Add(Reboot.Name, new Command(Reboot.Name, Reboot.Info, Reboot.NeedsParam,
+
+            Register(new Command(ShowCommands.Name, ShowCommands.Info, ShowCommands.NeedsParam,
+                () => ShowCommands.Run()));
+
+            Register(new Command(Reboot.Name, Reboot.Info, Reboot.NeedsParam,
                 () => Reboot.Run()));
-            Commands.Add(Clear.Name, new Command(Clear.Name, Clear.Info, Clear.NeedsParam,
+
+            Register(new Command(Clear.Name, Clear.Info, Clear.NeedsParam,
                 () => Clear.Run()));
             #endregion
 
             CustomConsole.WriteLineOK("Command Manager initialized");
+        }
+
+        public void Register(Command cmd)
+        {
+            if (Commands.TryAdd(cmd.Name, cmd))
+                CustomConsole.WriteLineOK($"Registered '{cmd.Name}'");
+            else
+                CustomConsole.WriteLineError($"Could not register '{cmd.Name}'");
         }
 
         public void Execute(string c)
@@ -45,6 +58,13 @@ namespace Raindrop
                 else y.Add(z[i]);
             }
 
+
+            if (Commands.ContainsKey(comd))
+            {
+                CustomConsole.WriteLineError($"'{comd}' doesn't exist or isn't registered.");
+                return;
+            }
+
             try
             {
                 if (Commands[comd].NeedsParam && y.Count == 0)
@@ -56,9 +76,9 @@ namespace Raindrop
                     Commands[comd].Run.Invoke();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                CustomConsole.WriteLineError($"'{comd}' doesn't exist or isn't registered.");
+                Crash.StopKernel(ex);
             }
         }
 

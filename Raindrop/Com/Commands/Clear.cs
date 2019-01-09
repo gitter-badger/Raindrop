@@ -12,7 +12,6 @@ namespace Raindrop.Com.Commands
 
         public static void Run()
         {
-            Console.ResetColor();
             Console.Clear();
         }
     }

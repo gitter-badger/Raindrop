@@ -33,7 +33,7 @@ namespace Raindrop
             Console.WriteLine("If this is the first time you've seen this error screen, press any key to restart" +
                 " your computer. If this screen appears again, follow these steps:");
             Console.WriteLine();
-            Console.WriteLine("Try to reinstall Aura Operating System on your computer or Virtual Machine. " +
+            Console.WriteLine("Try to reinstall Raindrop Operating System on your computer or Virtual Machine. " +
                 "You can also try to reset the filesystem with a blank .vmdk file if you're on a Virtual Machine" +
                 " and if not by formatting your device.");
             Console.WriteLine();
@@ -72,7 +72,7 @@ GitHub repository (github.com/KrasnotR/Raindrop).");
             Console.WriteLine("If this is the first time you've seen this error screen, press any key to restart " +
                 "your computer. If this screen appears again, follow these steps:");
             Console.WriteLine();
-            Console.WriteLine("Try to reinstall Aura Operating System on your computer or Virtual Machine. " +
+            Console.WriteLine("Try to reinstall Raindrop Operating System on your computer or Virtual Machine. " +
                 "You can also try to reset the filesystem with a blank .vmdk file if you're on a Virtual Machine " +
                 "and if not by formatting your device.");
             Console.WriteLine();

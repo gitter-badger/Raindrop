@@ -24,7 +24,6 @@ namespace Raindrop.Shells
 
             command = Console.ReadLine();
 
-            
             Kernel.CM.Execute(command);
         }
     }

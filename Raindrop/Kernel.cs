@@ -8,12 +8,12 @@ namespace Raindrop
 {
     public class Kernel : Sys.Kernel
     {
-        Prompt current;
+        public static Shell current;
         public static CommandManager CM;
         public static bool running = true;
 
         public static string version = "0.0.1";
-        public static string revision = "01072019050";
+        public static string revision = "010920190552";
 
         protected override void BeforeRun()
         {
@@ -21,7 +21,7 @@ namespace Raindrop
             {
                 CM = new CommandManager();
                 Console.WriteLine("Raindrop OS created by Krasno.");
-                Console.Clear();
+                //Console.Clear();
                 current = new Prompt();
             }
             catch (Exception ex)
