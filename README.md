@@ -1,2 +1,2 @@
 # Raindrop
-Raindrop is an OS created by Krasno that is based on Cosmos.
+Raindrop is an OS created by Krasno that uses C# and [CosmosOS/Cosmos](https://github.com/CosmosOS/Cosmos).
