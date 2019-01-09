@@ -31,6 +31,10 @@ namespace Raindrop
             CustomConsole.WriteLineOK("Command Manager initialized");
         }
 
+        /// <summary>
+        /// Registers a command
+        /// </summary>
+        /// <param name="cmd">Command</param>
         public void Register(Command cmd)
         {
             try
@@ -44,6 +48,13 @@ namespace Raindrop
             }
         }
 
+        /// <summary>
+        /// Registers a command
+        /// </summary>
+        /// <param name="name">The command name (what will be called in the Terminal)</param>
+        /// <param name="info">An short command description</param>
+        /// <param name="needsparam">If the command needs parameters</param>
+        /// <param name="r">The action that will be executed when the command is called</param>
         public void Register(string name, string info, bool needsparam, Action r)
         {
             try
@@ -58,6 +69,11 @@ namespace Raindrop
             }
         }
 
+        /// <summary>
+        /// Gets the command from the list
+        /// </summary>
+        /// <param name="c">Command name</param>
+        /// <returns></returns>
         public Command GetCommand(string c)
         {
             try
@@ -81,6 +97,10 @@ namespace Raindrop
             }
         }
 
+        /// <summary>
+        /// Executes a command
+        /// </summary>
+        /// <param name="c">Command name</param>
         public void Execute(string c)
         {
             y.Clear();
@@ -114,6 +134,11 @@ namespace Raindrop
             }
         }
 
+        /// <summary>
+        /// Parses the given line as a command
+        /// </summary>
+        /// <param name="c">Input</param>
+        /// <returns>A list of whatever was typed</returns>
         List<string> Parse(string c)
         {
             var p = new List<string>();

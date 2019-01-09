@@ -15,6 +15,10 @@ namespace Raindrop.Com.Commands
             Console.WriteLine(Yes());
         }
 
+        /// <summary>
+        /// Gets all the available commands
+        /// </summary>
+        /// <returns>Command list</returns>
         public static string Yes()
         {
             var s = "";
