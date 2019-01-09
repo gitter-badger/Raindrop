@@ -10,7 +10,8 @@ namespace Raindrop
 {
     public class CommandManager
     {
-        public Dictionary<string, Command> Commands = new Dictionary<string, Command>();
+        //public Dictionary<string, Command> Commands = new Dictionary<string, Command>();
+        public List<Command> Commands = new List<Command>();
 
         List<string> y = new List<string>();
         string comd;
@@ -20,20 +21,11 @@ namespace Raindrop
             Console.WriteLine("Registering commands...");
 
             #region Command registering
-            Register(new Command(Echo.Name, Echo.Info, Echo.NeedsParam,
-                () => Echo.Run(y.ToArray())));
-
-            Register(new Command(Shutdown.Name, Shutdown.Info, Shutdown.NeedsParam,
-                () => Shutdown.Run()));
-
-            Register(new Command(ShowCommands.Name, ShowCommands.Info, ShowCommands.NeedsParam,
-                () => ShowCommands.Run()));
-
-            Register(new Command(Reboot.Name, Reboot.Info, Reboot.NeedsParam,
-                () => Reboot.Run()));
-
-            Register(new Command(Clear.Name, Clear.Info, Clear.NeedsParam,
-                () => Clear.Run()));
+            Register(Echo.Name, Echo.Info, Echo.NeedsParam, () => Echo.Run(y.ToArray()));
+            Register(Shutdown.Name, Shutdown.Info, Shutdown.NeedsParam, () => Shutdown.Run());
+            Register(ShowCommands.Name, ShowCommands.Info, ShowCommands.NeedsParam, () => ShowCommands.Run());
+            Register(Reboot.Name, Reboot.Info, Reboot.NeedsParam, () => Reboot.Run());
+            Register(Clear.Name, Clear.Info, Clear.NeedsParam, () => Clear.Run());
             #endregion
 
             CustomConsole.WriteLineOK("Command Manager initialized");
@@ -41,10 +33,52 @@ namespace Raindrop
 
         public void Register(Command cmd)
         {
-            if (Commands.TryAdd(cmd.Name, cmd))
+            try
+            {
+                Commands.Add(cmd);
                 CustomConsole.WriteLineOK($"Registered '{cmd.Name}'");
-            else
-                CustomConsole.WriteLineError($"Could not register '{cmd.Name}'");
+            }
+            catch (Exception ex)
+            {
+                CustomConsole.WriteLineError($"Could not register '{cmd.Name}'. Error: {ex}");
+            }
+        }
+
+        public void Register(string name, string info, bool needsparam, Action r)
+        {
+            try
+            {
+                var cmd = new Command(name, info, needsparam, r);
+                Commands.Add(cmd);
+                CustomConsole.WriteLineOK($"Registered '{name}'");
+            }
+            catch (Exception ex)
+            {
+                CustomConsole.WriteLineError($"Could not register '{name}'. Error: {ex}");
+            }
+        }
+
+        public Command GetCommand(string c)
+        {
+            try
+            {
+                Command m = null;
+
+                foreach (var x in Commands)
+                {
+                    if (x.Name == c)
+                    {
+                        m = x;
+                    }
+                }
+
+                return m;
+            }
+            catch
+            {
+                CustomConsole.WriteLineError($"'{comd}' doesn't exist or isn't registered.");
+                return null;
+            }
         }
 
         public void Execute(string c)
@@ -58,27 +92,25 @@ namespace Raindrop
                 else y.Add(z[i]);
             }
 
+            var cmd = GetCommand(comd);
 
-            if (Commands.ContainsKey(comd))
+            if (cmd != null)
             {
-                CustomConsole.WriteLineError($"'{comd}' doesn't exist or isn't registered.");
-                return;
-            }
-
-            try
-            {
-                if (Commands[comd].NeedsParam && y.Count == 0)
+                try
                 {
-                    CustomConsole.WriteLineError("This command needs parameters");
+                    if (cmd.NeedsParam && y.Count == 0)
+                    {
+                        CustomConsole.WriteLineError("This command needs parameters");
+                    }
+                    else
+                    {
+                        cmd.Run.Invoke();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Commands[comd].Run.Invoke();
+                    Crash.StopKernel(ex);
                 }
-            }
-            catch (Exception ex)
-            {
-                Crash.StopKernel(ex);
             }
         }
 

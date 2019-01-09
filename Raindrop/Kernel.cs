@@ -21,7 +21,7 @@ namespace Raindrop
             {
                 CM = new CommandManager();
                 Console.WriteLine("Raindrop OS created by Krasno.");
-                //Console.Clear();
+                Console.Clear();
                 current = new Prompt();
             }
             catch (Exception ex)

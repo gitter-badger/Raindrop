@@ -18,11 +18,11 @@ namespace Raindrop.Com.Commands
         public static string Yes()
         {
             var s = "";
-            var q = Kernel.CM.Commands.Keys;
+            var q = Kernel.CM.Commands;
 
             foreach (var e in q)
             {
-                s += $"{e}\n";
+                s += $"{e.Name} - {e.Info}\n";
             }
 
             return s;
