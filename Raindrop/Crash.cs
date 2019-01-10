@@ -13,6 +13,7 @@ namespace Raindrop
         {
             Kernel.running = false;
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Red;
 
             Console.Clear();
@@ -55,6 +56,7 @@ GitHub repository (github.com/KrasnotR/Raindrop).");
         {
             Kernel.running = false;
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Red;
 
             Console.Clear();

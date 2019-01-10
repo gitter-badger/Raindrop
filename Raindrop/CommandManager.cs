@@ -1,6 +1,7 @@
 ﻿using Raindrop.Com;
 using Raindrop.Com.Commands;
 using Raindrop.Com.Commands.Power;
+using Raindrop.Com.FileSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace Raindrop
             Register(ShowCommands.Name, ShowCommands.Info, ShowCommands.NeedsParam, () => ShowCommands.Run());
             Register(Reboot.Name, Reboot.Info, Reboot.NeedsParam, () => Reboot.Run());
             Register(Clear.Name, Clear.Info, Clear.NeedsParam, () => Clear.Run());
+            Register(Cd.Name, Cd.Info, Cd.NeedsParam, () => Cd.Run(y.ToArray()[0]));
+            Register(Ls.Name, Ls.Info, Ls.NeedsParam, () => Ls.Run());
             #endregion
 
             CustomConsole.WriteLineOK("Command Manager initialized");
@@ -76,25 +79,21 @@ namespace Raindrop
         /// <returns></returns>
         public Command GetCommand(string c)
         {
-            try
-            {
-                Command m = null;
+            Command m = null;
 
-                foreach (var x in Commands)
+            foreach (var x in Commands)
+            {
+                if (x.Name == c)
                 {
-                    if (x.Name == c)
-                    {
-                        m = x;
-                    }
+                    m = x;
                 }
+            }
 
-                return m;
-            }
-            catch
-            {
+            if (m == null)
                 CustomConsole.WriteLineError($"'{comd}' doesn't exist or isn't registered.");
-                return null;
-            }
+
+            return m;
+
         }
 
         /// <summary>

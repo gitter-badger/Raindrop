@@ -18,6 +18,8 @@ namespace Raindrop.Shells
             Console.Write("@");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("rd-pc");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(Kernel.currentDirectory.Remove(0, 2));
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;

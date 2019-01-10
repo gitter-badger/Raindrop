@@ -6,6 +6,13 @@ namespace Raindrop
 {
     public static class CustomConsole
     {
+        public static void WriteLineInfo(string text)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("[Info] ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(text + "\n");
+        }
         public static void WriteLineOK(string data)
         {
             Console.ForegroundColor = ConsoleColor.Green;
