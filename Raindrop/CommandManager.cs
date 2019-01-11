@@ -11,7 +11,6 @@ namespace Raindrop
 {
     public class CommandManager
     {
-        //public Dictionary<string, Command> Commands = new Dictionary<string, Command>();
         public List<Command> Commands = new List<Command>();
 
         List<string> y = new List<string>();
@@ -29,6 +28,13 @@ namespace Raindrop
             Register(Clear.Name, Clear.Info, Clear.NeedsParam, () => Clear.Run());
             Register(Cd.Name, Cd.Info, Cd.NeedsParam, () => Cd.Run(y.ToArray()[0]));
             Register(Ls.Name, Ls.Info, Ls.NeedsParam, () => Ls.Run());
+            Register(Cat.Name, Cat.Info, Cat.NeedsParam, () => Cat.Run(y.ToArray()[0]));
+            Register(Edit.Name, Edit.Info, Edit.NeedsParam, () => Edit.Run(y.ToArray()[0]));
+            Register(Lspci.Name, Lspci.Info, Lspci.NeedsParam, () => Lspci.Run());
+            Register(CTime.Name, CTime.Info, CTime.NeedsParam, () => CTime.Run());
+            Register(MD5.Name, MD5.Info, MD5.NeedsParam, () => MD5.Run(y.ToArray()[0]));
+            Register(SHA256.Name, SHA256.Info, SHA256.NeedsParam, () => SHA256.Run(y.ToArray()[0]));
+            Register(Snake.Name, Snake.Info, Snake.NeedsParam, () => Snake.Run());
             #endregion
 
             CustomConsole.WriteLineOK("Command Manager initialized");
@@ -43,7 +49,7 @@ namespace Raindrop
             try
             {
                 Commands.Add(cmd);
-                CustomConsole.WriteLineOK($"Registered '{cmd.Name}'");
+                //CustomConsole.WriteLineOK($"Registered '{cmd.Name}'");
             }
             catch (Exception ex)
             {
@@ -64,7 +70,7 @@ namespace Raindrop
             {
                 var cmd = new Command(name, info, needsparam, r);
                 Commands.Add(cmd);
-                CustomConsole.WriteLineOK($"Registered '{name}'");
+                //CustomConsole.WriteLineOK($"Registered '{name}'");
             }
             catch (Exception ex)
             {
@@ -100,8 +106,9 @@ namespace Raindrop
         /// Executes a command
         /// </summary>
         /// <param name="c">Command name</param>
-        public void Execute(string c)
+        public bool Execute(string c)
         {
+            comd = "";
             y.Clear();
             //var z = Regex.Matches(c, "(\"[^\"]+\" |[^\\s\"]+)");        Regex not plugged in CosmosOS :(
             var z = Parse(c);
@@ -109,6 +116,11 @@ namespace Raindrop
             {
                 if (i == 0) comd = z[i].ToLowerInvariant();
                 else y.Add(z[i]);
+            }
+
+            if (comd == "")
+            {
+                return false;
             }
 
             var cmd = GetCommand(comd);
@@ -120,17 +132,25 @@ namespace Raindrop
                     if (cmd.NeedsParam && y.Count == 0)
                     {
                         CustomConsole.WriteLineError("This command needs parameters");
+                        comd = "";
+                        return true;
                     }
                     else
                     {
                         cmd.Run.Invoke();
+                        comd = "";
+                        return true;
                     }
                 }
                 catch (Exception ex)
                 {
                     Crash.StopKernel(ex);
+                    return true;
                 }
             }
+
+            comd = "";
+            return true;
         }
 
         /// <summary>

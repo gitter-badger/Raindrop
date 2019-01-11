@@ -133,7 +133,7 @@
       <PlatformTarget>AnyCPU</PlatformTarget>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <WarningLevel>4</WarningLevel>
-      <DebugEnabled>True</DebugEnabled>
+      <DebugEnabled>False</DebugEnabled>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

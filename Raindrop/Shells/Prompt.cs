@@ -24,9 +24,16 @@ namespace Raindrop.Shells
             Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            command = Console.ReadLine();
+            var z = true;
 
-            Kernel.CM.Execute(command);
+            while (z)
+            {
+                command = Console.ReadLine();
+
+                var e = Kernel.CM.Execute(command);
+
+                z = !e;
+            }
         }
     }
 }

@@ -116,19 +116,7 @@ namespace Raindrop.System
         /// <returns>Actual Hour</returns>
         public static string TimeString(bool hour, bool min, bool sec)
         {
-            switch (Kernel.langSelected)
-            {
-                case "fr_FR":
-                    return getTime24(hour, min, sec);
-                case "en_US":
-                    return getTime12(hour, min, sec);
-                case "nl_NL":
-                    return getTime24(hour, min, sec);
-                case "it_IT":
-                    return getTime12(hour, min, sec);
-                default:
-                    return getTime12(hour, min, sec);
-            }
+            return getTime12(hour, min, sec);
         }
 
         /// <summary>

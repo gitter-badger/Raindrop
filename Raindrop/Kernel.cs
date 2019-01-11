@@ -65,16 +65,17 @@ namespace Raindrop
                 #endregion
 
                 CM = new CommandManager();
-                CustomConsole.WriteLineOK("Raindrop OS started fine.");
-
+                CustomConsole.WriteLineOK("Raindrop OS started.");
+                Console.Write("Press any key to continue...");
+                Console.ReadKey();
                 Console.Clear();
                 current = new Prompt();
-                vFS.CreateDirectory(currentDirectory + @"Test");
+                /*vFS.CreateDirectory(currentDirectory + @"Test");
                 vFS.CreateDirectory(currentDirectory + @"Test\atabo");
                 vFS.CreateFile(currentDirectory + @"Test\atabo.rd");
                 vFS.CreateFile(currentDirectory + @"Test\passwd.nonono");
                 vFS.CreateFile(currentDirectory + @"Test\.hiddenfile.txt");
-                vFS.CreateFile(currentDirectory + @"root.conf");
+                vFS.CreateFile(currentDirectory + @"root.conf");*/
             }
             catch (Exception ex)
             {

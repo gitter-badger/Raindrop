@@ -12,24 +12,14 @@ namespace Raindrop.Com.Commands
 
         public static void Run()
         {
-            Console.WriteLine(Yes());
-        }
-
-        /// <summary>
-        /// Gets all the available commands
-        /// </summary>
-        /// <returns>Command list</returns>
-        public static string Yes()
-        {
-            var s = "";
-            var q = Kernel.CM.Commands;
-
-            foreach (var e in q)
+            foreach (var e in Kernel.CM.Commands)
             {
-                s += $"{e.Name} - {e.Info}\n";
+                if (e.NeedsParam)
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write($"{e.Name}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($" - {e.Info}");
             }
-
-            return s;
         }
     }
 }
