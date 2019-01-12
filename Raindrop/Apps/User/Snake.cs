@@ -140,7 +140,8 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("#############################");
+                    //Console.Write("#############################");
+                    Console.Write("█████████████████████████████");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -151,7 +152,8 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("###                       ###");
+                    //Console.Write("###                       ###");
+                    Console.Write("███                       ███");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -162,11 +164,13 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("###       ");
+                    //Console.Write("###       ");
+                    Console.Write("███       ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("GAMEOVER");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("        ###");
+                    //Console.Write("        ###");
+                    Console.Write("        ███");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -177,13 +181,15 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("###      ");
+                    //Console.Write("###      ");
+                    Console.Write("███      ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Score: ");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(GetSnakeScore());
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("      ###");
+                    //Console.Write("      ###");
+                    Console.Write("      ███");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -194,7 +200,8 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("###                       ###");
+                    //Console.Write("###                       ###");
+                    Console.Write("███                       ███");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -205,7 +212,8 @@ namespace Raindrop.Apps.User
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("#############################");
+                    //Console.Write("#############################");
+                    Console.Write("█████████████████████████████");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("║");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -221,36 +229,38 @@ namespace Raindrop.Apps.User
                 else if (matrix[i] == 1 && !Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("#");
+                    //Console.Write("#");
+                    Console.Write("█");
                 }
                 else if (matrix[i] == 1 && Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("#");
+                    //Console.Write("#");
+                    Console.Write("█");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else if (matrix[i] == 2 && !Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("$");
+                    Console.Write("@");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else if (matrix[i] == 2 && Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.Write("$");
+                    Console.Write("@");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else if (matrix[i] == 3 && !Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.Write("*");
+                    Console.Write("█");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else if (matrix[i] == 3 && Gameover())
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.Write("*");
+                    Console.Write("█");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
@@ -262,22 +272,26 @@ namespace Raindrop.Apps.User
             if (!Gameover())
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("#  Current score: ");
+                Console.Write("║  Current score: ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(GetSnakeScore());
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("      Exit game: ESC button      Restart game: R button  #");
-                Console.Write("################################################################################");
+                Console.Write("      Exit game: ESC button      Restart game: R button  ║");
+                //Console.Write("################################################################################");
+                //Console.Write("████████████████████████████████████████████████████████████████████████████████");
+                Console.Write("╚══════════════════════════════════════════════════════════════════════════════╝");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("#  Current score: ");
+                Console.Write("║  Current score: ");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write(GetSnakeScore());
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("      Exit game: ESC button      Restart game: R button  #");
-                Console.Write("################################################################################");
+                Console.Write("      Exit game: ESC button      Restart game: R button  ║");
+                //Console.Write("################################################################################");
+                //Console.Write("████████████████████████████████████████████████████████████████████████████████");
+                Console.Write("╚══════════════════════════════════════════════════════════════════════════════╝");
             }
             Console.CursorVisible = true;
         }
@@ -374,13 +388,20 @@ namespace Raindrop.Apps.User
             Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
             Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("  #####");
+            /*Console.WriteLine("  #####");
             Console.WriteLine(" #     # #    #   ##   #    # ######");
             Console.WriteLine(" #       ##   #  #  #  #   #  #");
             Console.WriteLine("  #####  # #  # #    # ####   #####");
             Console.WriteLine("       # #  # # ###### #  #   #");
             Console.WriteLine(" #     # #   ## #    # #   #  #");
-            Console.Write("  #####  #    # #    # #    # ######");
+            Console.Write("  #####  #    # #    # #    # ######");*/
+            Console.WriteLine("  █████");
+            Console.WriteLine(" █     █ █    █   ██   █    █ ██████");
+            Console.WriteLine(" █       ██   █  █  █  █   █  █");
+            Console.WriteLine("  █████  █ █  █ █    █ ████   █████");
+            Console.WriteLine("       █ █  █ █ ██████ █  █   █");
+            Console.WriteLine(" █     █ █   ██ █    █ █   █  █");
+            Console.Write    ("  █████  █    █ █    █ █    █ ██████");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" v" + prgmVersion);
             Console.Write("                                  by");
@@ -392,6 +413,7 @@ namespace Raindrop.Apps.User
 
         public void Run()
         {
+            Console.CursorVisible = true;
             Console.Clear();
             PrintLogo();
             Console.Write("Welcome to Snake, write snake to start the game: ");
@@ -405,6 +427,7 @@ namespace Raindrop.Apps.User
                     ConsoleKey x;
                     while (true)
                     {
+                        Console.CursorVisible = false;
                         while (Gameover())
                         {
                             PrintGame();
@@ -477,10 +500,12 @@ namespace Raindrop.Apps.User
                         {
                             ConfigSnake();
                         }
+                        Console.CursorVisible = true;
                     }
                     break;
                 default:
                     Console.WriteLine("Wrong option.");
+                    Console.CursorVisible = true;
                     Run();
                     break;
             }

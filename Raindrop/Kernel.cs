@@ -53,14 +53,23 @@ namespace Raindrop
                 CustomConsole.WriteLineInfo("Booting Raindrop Operating System...");
 
                 #region Register filesystem
-                Sys.FileSystem.VFS.VFSManager.RegisterVFS(vFS);
-                if (ContainsVolumes())
+                Console.Write("Initialize file system? (Y/N) ");
+                var fsc = Console.ReadLine().ToLowerInvariant();
+                if (fsc == "y" || fsc == "yes")
                 {
-                    CustomConsole.WriteLineOK("FileSystem Registration");
+                    Sys.FileSystem.VFS.VFSManager.RegisterVFS(vFS);
+                    if (ContainsVolumes())
+                    {
+                        CustomConsole.WriteLineOK("FileSystem Registration");
+                    }
+                    else
+                    {
+                        CustomConsole.WriteLineError("FileSystem Registration");
+                    }
                 }
                 else
                 {
-                    CustomConsole.WriteLineError("FileSystem Registration");
+                    CustomConsole.WriteLineWarning("FileSystem not registered!");
                 }
                 #endregion
 

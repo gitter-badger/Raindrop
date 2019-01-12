@@ -10,6 +10,7 @@ namespace Raindrop.Shells
 
         public override void Run()
         {
+            Console.CursorVisible = true;
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("$");
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -28,6 +29,7 @@ namespace Raindrop.Shells
 
             while (z)
             {
+                Console.CursorVisible = true;
                 command = Console.ReadLine();
 
                 var e = Kernel.CM.Execute(command);
