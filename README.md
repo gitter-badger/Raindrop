@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/ncbsueb99it75ga5?svg=true)](https://ci.appveyor.com/project/KrasnotR/raindrop)
+[![Build status](https://ci.appveyor.com/api/projects/status/ncbsueb99it75ga5?svg=true)](https://ci.appveyor.com/project/KrasnotR/raindrop) [![Join the chat at https://gitter.im/KrasnotR/community](https://badges.gitter.im/KrasnotR/community.svg)](https://gitter.im/KrasnotR/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # Raindrop
 Raindrop is an OS created by Krasno that uses C# and [CosmosOS/Cosmos](https://github.com/CosmosOS/Cosmos).
